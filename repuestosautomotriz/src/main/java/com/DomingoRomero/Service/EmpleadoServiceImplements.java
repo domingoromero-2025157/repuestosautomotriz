@@ -35,7 +35,7 @@ public class EmpleadoServiceImplements implements EmpleadoService{
 
     @Override
     public void delateEmpleado(Integer id) {
-    empleadoRepository.deleteById(id);
+        empleadoRepository.deleteById(id);
 
 
 
