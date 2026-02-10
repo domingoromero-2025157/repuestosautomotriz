@@ -12,4 +12,8 @@ public interface EmpleadoService {
     Empleado saveEmpleado (Empleado empleado) throws RuntimeException;
     Empleado upadateEmpleado (Integer id, Empleado empleado);
     void delateEmpleado (Integer id);
+
+    void deleteEmpleado(Integer id);
+
+    Empleado updateEmpleado(Integer id, Empleado empleado);
 }
