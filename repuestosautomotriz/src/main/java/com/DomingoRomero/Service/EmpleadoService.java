@@ -1,7 +1,7 @@
 package com.DomingoRomero.Service;
 
 
-import com.DomingoRomero.Model.Empleado;
+import com.DomingoRomero.Entity.Empleado;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

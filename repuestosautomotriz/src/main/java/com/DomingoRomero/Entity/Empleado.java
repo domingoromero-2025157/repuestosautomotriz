@@ -1,7 +1,6 @@
-package com.DomingoRomero.Model;
+package com.DomingoRomero.Entity;
 
 import jakarta.persistence.*;
-import org.springframework.aot.generate.GeneratedTypeReference;
 
 
 @Entity // una clase anotada , represeta una tabla relacionar , actua comom un puente entre la programacion orientada a objetos y SQL (JPA ivernes)prermitiendo mapiar automaticamente atrivutos a columnas

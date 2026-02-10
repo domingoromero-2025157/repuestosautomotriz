@@ -1,6 +1,6 @@
 package com.DomingoRomero.Controller;
 
-import com.DomingoRomero.Model.Empleado;
+import com.DomingoRomero.Entity.Empleado;
 import com.DomingoRomero.Service.EmpleadoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
