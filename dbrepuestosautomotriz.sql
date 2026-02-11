@@ -116,16 +116,17 @@ END$$
 -- EMPLEADOS
 -- =========================
 
+DELIMITER $$
 CREATE PROCEDURE sp_empleados_read_all()
 BEGIN
     SELECT * FROM empleados ORDER BY id_empleado;
 END$$
 
 CREATE PROCEDURE sp_empleados_create(
-     in p_nombre_empleado VARCHAR(60),
-     in p_apellido_empleado VARCHAR(60),
-     in p_puesto_empleado VARCHAR(20),
-     in p_email_empleado VARCHAR(100)
+    IN p_nombre_empleado VARCHAR(60),
+    IN p_apellido_empleado VARCHAR(60),
+    IN p_puesto_empleado VARCHAR(20),
+    IN p_email_empleado VARCHAR(100)
 )
 BEGIN
     INSERT INTO empleados (
@@ -142,6 +143,33 @@ BEGIN
     );
 END$$
 
+CREATE PROCEDURE sp_empleados_read_by_id(IN p_id INT)
+BEGIN
+    SELECT * FROM empleados WHERE id_empleado = p_id;
+END$$
+
+CREATE PROCEDURE sp_empleados_update(
+    IN p_id INT,
+    IN p_nombre_empleado VARCHAR(60),
+    IN p_apellido_empleado VARCHAR(60),
+    IN p_puesto_empleado VARCHAR(20),
+    IN p_email_empleado VARCHAR(100)
+)
+BEGIN
+    UPDATE empleados
+    SET nombre_empleado = p_nombre_empleado,
+        apellido_empleado = p_apellido_empleado,
+        puesto_empleado = p_puesto_empleado,
+        email_empleado = p_email_empleado
+    WHERE id_empleado = p_id;
+END$$
+
+CREATE PROCEDURE sp_empleados_delete(IN p_id INT)
+BEGIN
+    DELETE FROM empleados WHERE id_empleado = p_id;
+END$$
+
+DELIMITER $$
 -- =========================
 -- REPUESTOS
 -- =========================
