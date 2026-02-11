@@ -145,12 +145,11 @@ END$$
 -- =========================
 -- REPUESTOS
 -- =========================
-
+DELIMITER $$
 CREATE PROCEDURE sp_repuestos_read_all()
 BEGIN
     SELECT * FROM repuestos ORDER BY id_repuesto;
 END$$
-
 CREATE PROCEDURE sp_repuestos_create(
     IN p_nombre_repuesto VARCHAR(60),
     IN p_categoria_repuesto VARCHAR(60),
@@ -174,10 +173,43 @@ BEGIN
         p_id_proveedor
     );
 END$$
+CREATE PROCEDURE sp_repuestos_read_by_id(IN p_id INT)
+BEGIN
+    SELECT * FROM repuestos WHERE id_repuesto = p_id;
+END$$
+CREATE PROCEDURE sp_repuestos_update(
+    IN p_id INT,
+    IN p_nombre_repuesto VARCHAR(60),
+    IN p_categoria_repuesto VARCHAR(60),
+    IN p_precio_compra DOUBLE,
+    IN p_precio_venta DOUBLE,
+    IN p_id_proveedor INT
+)
+BEGIN
+    UPDATE repuestos
+    SET nombre_repuesto = p_nombre_repuesto,
+        categoria_repuesto = p_categoria_repuesto,
+        precio_compra = p_precio_compra,
+        precio_venta = p_precio_venta,
+        id_proveedor = p_id_proveedor
+    WHERE id_repuesto = p_id;
+END$$
+CREATE PROCEDURE sp_repuestos_delete(IN p_id INT)
+BEGIN
+    DELETE FROM repuestos WHERE id_repuesto = p_id;
+END$$
+
+
+DELIMITER $$
 
 -- =========================
 -- VENTAS
 -- =========================
+DELIMITER $$
+CREATE PROCEDURE sp_ventas_read_all()
+BEGIN
+    SELECT * FROM ventas ORDER BY id_venta;
+END$$
 
 CREATE PROCEDURE sp_ventas_create(
     IN p_fecha_venta DATE,
@@ -201,6 +233,34 @@ BEGIN
         p_id_empleado,
         p_id_repuesto
     );
+END$$
+
+CREATE PROCEDURE sp_ventas_read_by_id(IN p_id INT)
+BEGIN
+    SELECT * FROM ventas WHERE id_venta = p_id;
+END$$
+
+CREATE PROCEDURE sp_ventas_update(
+    IN p_id INT,
+    IN p_fecha_venta DATE,
+    IN p_cantidad INT,
+    IN p_total DOUBLE,
+    IN p_id_empleado INT,
+    IN p_id_repuesto INT
+)
+BEGIN
+    UPDATE ventas
+    SET fecha_venta = p_fecha_venta,
+        cantidad = p_cantidad,
+        total = p_total,
+        id_empleado = p_id_empleado,
+        id_repuesto = p_id_repuesto
+    WHERE id_venta = p_id;
+END$$
+
+CREATE PROCEDURE sp_ventas_delete(IN p_id INT)
+BEGIN
+    DELETE FROM ventas WHERE id_venta = p_id;
 END$$
 
 DELIMITER ;
